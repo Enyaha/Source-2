@@ -1,3 +1,5 @@
+import {postData} from '../services/requests';
+
 // import checkNumInputs from './checkNumInputs';
 
 const forms = () => {
@@ -19,15 +21,6 @@ const forms = () => {
     const path = {
         designer: 'assets/server.php',
         question: 'assets/question.php'
-    };
-
-    const postData = async (url, data) => {
-        let res = await fetch(url, {
-            method: 'POST',
-            body: data
-        });
-
-        return await res.text();
     };
 
     const clearInputs = () => {
