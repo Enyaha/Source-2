@@ -4457,19 +4457,16 @@ var accordion = function accordion(triggersSelector) {
   var btns = document.querySelectorAll(triggersSelector);
   btns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      // if(!this.classList.contains('active-style')) {
-      //     btns.forEach(btn => {
-      //         btn.classList.remove('active-style');
-      //     });
-      //     this.nextElementSibling.classList.add('active-content');
-      // }
-      this.classList.toggle('active-style');
-      this.nextElementSibling.classList.toggle('active-content');
+      btns.forEach(function (btn) {
+        btn.classList.remove('active-style');
+        btn.nextElementSibling.classList.remove('active-content');
+        btn.nextElementSibling.style.maxHeight = '0px';
+      });
+      this.classList.add('active-style');
+      this.nextElementSibling.classList.add('active-content');
 
       if (this.classList.contains('active-style')) {
         this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
-      } else {
-        this.nextElementSibling.style.maxHeight = '0px';
       }
     });
   }); // const blocks = document.querySelectorAll(itemsSelector);
